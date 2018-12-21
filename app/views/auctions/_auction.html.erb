@@ -1,0 +1,21 @@
+<% unless @update %>
+  <div class="col-4 offset-4 text-center auction-current">
+    <h1>
+      Sorry no Auctions Currently!
+    </h1>
+  </div>
+<% else %>
+  <div class="col-4 offset-4 auction-current text-center">
+    <h1><%= @auction.name %></h1>
+    <h4>Currency: <%= @auction.currency %></h4>
+    <p class="d-none" id="controllerCountDown"><%= @auction.time %></p>
+    <p id="countdown"></p>
+  </div>
+  <div class="bids text-center col-4 offset-4">
+    <% @bids.each do |bid| %>
+      <div class="user-bid col-12">
+        <h5><%= "#{User.find_by(id: bid.user_id).username}: #{bid.bid}" %></h5>
+      </div>
+    <% end %>
+  </div>
+<% end %>

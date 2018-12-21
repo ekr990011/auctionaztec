@@ -1,0 +1,106 @@
+<div class='col-4 usernew'>
+  <h2 class='text-center'>Sign Up:</h2>
+  <%= form_for @user do |f| %>
+   <div class='form-group'>
+     <%= f.label :username %>
+     <%= f.text_field :username, class: 'form-control' %>
+   </div>
+   <div class='form-group'>
+     <%= f.label :password %>
+     <%= f.password_field :password, class: 'form-control' %>
+   </div>
+   <div class='form-group'>
+     <%= f.label :confirm_password %>
+     <%= f.password_field :password_confirmation, class: 'form-control' %>
+   </div>
+   <div class='join-button text-center'>
+     <%= f.submit 'Join!', class: 'btn btn-primary btn-lg' %>
+   </div>
+  <% end %>
+</div>
+
+<div class="col-4 userlogin">
+  <%= form_for(:session, url: sessions_path) do |f| %>
+    <h2 class='text-center'>Login:</h2>
+    <%= f.text_field :username, :placeholder => "Username", class: "form-control" %>
+    <%= f.password_field :password, :placeholder => "Password", class: "form-control" %>
+    <div class='join-button text-center'>
+      <%= f.submit "Log in", class: "btn btn-lg btn-primary text-center" %>
+    </div>
+  <% end %>
+</div>
+
+<div class='col-4 bid-form mx-auto fixed-bottom'>
+  <h2 class='text-center'>Bid:</h2>
+  <%= form_for @bid, url: bids_path, method: :post do |f| %>
+    <div class='form-group'>
+      <%= f.label "Bid" %>
+      <%= f.number_field :bid, class: 'form-control' %>
+    </div>
+    <div class='join-button text-center'>
+      <%= f.submit 'Bid!', class: 'btn btn-primary btn-lg' %>
+    </div>
+  <% end %>
+</div>
+
+<% unless @update %>
+  <div class='col-4 auction-form mx-auto fixed-bottom'>
+    <h2 class='text-center'>Auction:</h2>
+    <%= form_for @auction do |f| %>
+      <div class='form-group'>
+        <%= f.label "Auction Name" %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class='form-group'>
+        <%= f.label "Currency" %>
+        <%= f.text_field :currency, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label "Days" %>
+        <%= f.number_field :days, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+         <%= f.label "Hours" %>
+         <%= f.number_field :hours, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+         <%= f.label "Minutes" %>
+         <%= f.number_field :minutes, class: 'form-control' %>
+      </div>
+      <div class='join-button text-center'>
+        <%= f.submit 'Create!', class: 'btn btn-primary btn-lg' %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class='col-4 auction-form mx-auto fixed-bottom'>
+    <h2 class='text-center'>Auction:</h2>
+    <%= form_for @auction, url: auctions_path, method: :patch do |f| %>
+      <div class='form-group'>
+        <%= f.label "Auction Name" %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class='form-group'>
+        <%= f.label "Currency" %>
+        <%= f.text_field :currency, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label "Days" %>
+        <%= f.number_field :days, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+         <%= f.label "Hours" %>
+         <%= f.number_field :hours, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+         <%= f.label "Minutes" %>
+         <%= f.number_field :minutes, class: 'form-control' %>
+      </div>
+      <div class='join-button text-center'>
+        <%= f.submit 'Update!', class: 'btn btn-primary btn-lg' %>
+        <%= link_to 'Delete!', auctions_path(@auction), method: :delete,
+            data: {confirm: "Are you sure?"} , class: 'btn btn-danger btn-lg' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

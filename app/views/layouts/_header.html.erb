@@ -1,0 +1,27 @@
+<div class="col-12 header">
+  <% if current_user %>
+    <%= button_tag current_user.username, type: "button", class: "btn btn-lg btn-secondary user float-left" %>
+    <%= button_to "Log out", sessions_path, method: :delete, class: "btn btn-lg btn-secondary logout float-right", data: { confirm: "Are you sure?" } %>
+  <% else %>
+    <%= button_tag "Sign Up", type: "button", class: "btn btn-lg btn-secondary signup float-left" %>
+    <%= button_tag "Login", type: "button", class: "btn btn-lg btn-secondary login float-right" %>
+  <% end %>
+  
+  <% unless current_user.nil? || current_user.role == 'admin' || !@update %>
+    <div class="text-center">
+      <%= button_tag "Bid!", class: "btn btn-lg btn-secondary bid" %>
+    </div>
+  <% end %>
+  
+  <% if current_user && current_user.role == 'admin' %>
+    <% unless @update %>
+      <div class="text-center">
+        <%= button_tag "Create Auction", type: "button", class: "btn btn-lg btn-secondary auction" %>
+      </div>
+    <% else %>
+      <div class="text-center">
+        <%= button_tag "Update Auction", type: "button", class: "btn btn-lg btn-secondary auction" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,8 @@
+{
+  "name": "auctionminecraft",
+  "private": true,
+  "dependencies": {
+    "moment": "^2.23.0",
+    "pc-bootstrap4-datetimepicker": "^4.17.50"
+  }
+}

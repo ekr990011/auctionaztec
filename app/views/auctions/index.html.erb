@@ -1,0 +1,11 @@
+<div class="col-12">
+  <% if flash[:danger] %>
+      <div class="alert-warning col-4 offset-4 text-center alert"><%= flash[:danger] %></div>
+  <% elsif flash[:alert] %>
+      <div class="alert-danger col-4 offset-4 text-center alert"><%= flash[:alert] %></div>
+  <% elsif flash[:success] %>
+    <div class="alert-success col-4 offset-4 text-center alert"><%= flash[:success] %></div>
+  <% end %>
+  
+  <%= render 'auctions/auction' %>
+</div>
